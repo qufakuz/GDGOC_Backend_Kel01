@@ -1,0 +1,114 @@
+openapi: "3.0.2"
+
+info:
+  title: Laporan Dana
+  description: Manage API endpoints.
+  version: 0.0.1
+
+servers:
+  - url: http://localhost:3000
+
+paths:
+  # Write your own API endpoints
+  /:
+    # endpoint GET /
+    get:
+      tags:
+        - Report
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  judul:
+                    type: string
+                  keterangan:
+                    type: string
+                  tabel:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        nama:
+                          type: string
+                        dansos:
+                          type: number
+                        kas:
+                          type: number
+    # endpoint PUT /
+    put:
+      tags:
+        - Report
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                judul:
+                  type: string
+                keterangan:
+                  type: string
+      responses:
+        200:
+          description: OK
+          content:
+  /tabel:
+    # endpoint POST /tabel
+    post:
+      tags:
+        - Report
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nama:
+                  type: string
+                dansos:
+                  type: number
+                kas:
+                  type: number
+      responses:
+        201:
+          description: CREATED
+          content:
+  /tabel/{id}:
+    # endpoint PUT /tabel
+    put:
+      tags:
+        - Report
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nama:
+                  type: string
+                dansos:
+                  type: number
+                kas:
+                  type: number
+      responses:
+        200:
+          description: OK
+          content:
+    # endpoint DELETE /tabel
+    delete:
+      tags:
+        - Report
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
